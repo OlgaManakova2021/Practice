@@ -1,0 +1,44 @@
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+  }
+  
+  .npm-icon-container {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    transition: all 0.2s var(--ease-1);
+  }
+  
+  .npm-icon {
+    position: absolute;
+    opacity: 1;
+    width: 56px;
+    height: 56px;
+    top: -125%;
+    left: -125%;
+    background-image: url("https://www.spltjs.com/public/check-animation.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 3700%;
+    cursor: pointer;
+  }
+  
+  #copy-npm:hover .npm-icon {
+    background-position: right;
+  }
+  
+  .is_animating {
+    animation: heart-burst 1.2s steps(36) 1;
+  }
+  
+  @keyframes heart-burst {
+    from {
+      background-position: left;
+    }
+    to {
+      background-position: right;
+    }
+  }
+  

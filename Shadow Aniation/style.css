@@ -1,0 +1,87 @@
+@property --shadow-grow {
+	syntax: '<length>';
+	inherits: true;
+	initial-value: 0;
+}
+
+body {
+  --ctx-bg: rgb(29, 18, 47);
+  --ctx-color: rgb(240, 241, 244);
+  --accent: #ffe4c2;
+  --highlight: #ff0196;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  color: var(--ctx-color);
+  background-color: var(--ctx-bg);
+}
+
+div {
+  --shadow-pos: ;
+  --shadow-grow: 1em;
+	
+  width: Min(360px, 80%);
+  padding: 2em;
+  
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  border: 2px solid var(--accent);
+	
+  box-shadow: 0 0 0 var(--shadow-grow) var(--highlight) var(--shadow-pos);
+	
+  animation: shadow 2s ease-in-out infinite alternate;
+}
+
+@keyframes shadow {
+	0% {
+		box-shadow: 0 0 0 1em var(--highlight);
+		animation-timing-function: ease-in;
+	}
+	49.999% {
+		box-shadow: 0 0 0 0 var(--highlight);
+		animation-timing-function: linear;
+	}
+	50% {
+		box-shadow: 0 0 0 0 var(--highlight) inset;
+		--shadow-pos: inset;
+		animation-timing-function: ease-out;
+	}
+	100% {
+		box-shadow: 0 0 0 1em var(--highlight) inset;
+	}
+}
+
+.prop {
+  --shadow-pos: ;
+  --shadow-grow: 1em;
+	
+  box-shadow: 0 0 0 var(--shadow-grow) var(--highlight) var(--shadow-pos);
+	
+  animation: shadowWithVar 2s ease-in-out infinite alternate;
+}
+
+@keyframes shadowWithVar {
+	0% {
+		--shadow-grow: 1em;
+		--shadow-pos: ;
+		animation-timing-function: ease-in;
+	}
+	49.999% {
+		--shadow-pos: ;
+		animation-timing-function: linear;
+	}
+	50% {
+		--shadow-grow: 0em;
+		--shadow-pos: inset;
+		animation-timing-function: ease-out;
+	}
+	100% {
+		--shadow-grow: 1em;
+		--shadow-pos: inset;
+	}
+}
